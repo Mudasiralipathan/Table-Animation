@@ -1,0 +1,50 @@
+
+  /* CSS styles go here */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    padding: 20px;
+  }
+  tr{
+    
+    transition: background-color 0.3s ease;
+    animation: animate 1s linear;
+    
+  }
+  
+  table {
+    
+    
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  th, td {
+   
+    padding: 25px 15px; /* Increased padding to increase row height */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    
+    background-color: #0096c7;
+    color: white;
+    font-weight: bold;
+  }
+  tr:nth-child(even) {
+    background-color:#ade8f4 ;
+  }
+  @keyframes animate {
+    0%{
+      transform: translateX(calc((-500px)*var(--i)));
+ 
+    }
+    100%{
+      transform: translate(0%);   
+    }
+  }
+
