@@ -1,50 +1,173 @@
+/* Excel-like Theme CSS */
+* {
+  font-family: "Varela Round", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
-  /* CSS styles go here */
-  body {
-    font-family: Arial, sans-serif;
-    background-color: white;
-    padding: 20px;
-  }
-  tr{
-    
-    transition: background-color 0.3s ease;
-    animation: animate 1s linear;
-    
-  }
-  
-  table {
-    
-    
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  th, td {
-   
-    padding: 25px 15px; /* Increased padding to increase row height */
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F4F4F4; /* Light grey background for a clean look */
+  color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  th {
-    
-    background-color: #0096c7;
-    color: white;
-    font-weight: bold;
-  }
-  tr:nth-child(even) {
-    background-color:#ade8f4 ;
-  }
-  @keyframes animate {
-    0%{
-      transform: translateX(calc((-500px)*var(--i)));
- 
-    }
-    100%{
-      transform: translate(0%);   
-    }
-  }
+.frame {
+  margin-top: 20px;
+  width: 90%;
+}
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #D0D0D0;
+  border-radius: 8px; /* Rounded corners */
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+th {
+  padding-block: 30px;
+  background-color: #4F81BD; /* Darker blue for headers */
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #DCE6F1; /* Light blue for even rows */
+}
+
+tr:nth-child(odd) {
+  background-color: #FFFFFF; /* White for odd rows */
+}
+
+tr:hover {
+  background-color: #BDD7EE; /* Light blue on hover */
+}
+
+.gender {
+  text-align: center;
+}
+
+.gender[data-gender="Male"]::before {
+  font-family: 'FontAwesome';
+  content: '\f222'; /* Unicode for male sign */
+  color: #007BFF; /* Blue color for male sign */
+  font-size: 24px; /* Larger size for visibility */
+}
+
+.gender[data-gender="Female"]::before {
+  font-family: 'FontAwesome';
+  content: '\f221'; /* Unicode for female sign */
+  color: #E83E8C; /* Pink color for female sign */
+  font-size: 24px; /* Larger size for visibility */
+}
+
+@keyframes tranimate {
+  0% {
+    transform: translateX(calc(-100% + var(--i) * -5%));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+tr {
+  animation: tranimate 1.2s linear;
+}
+
+tr>td:nth-child(3) {
+  padding: 0;
+  width: 200px;
+  height: 94px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+tr>td:nth-child(3)>img {
+  width: 50px;
+  height: 56px;
+  left: 0;
+  position: absolute;
+  padding: 5px;
+  top: 12px;
+  margin-right: 10px;
+}
+
+tr>td:nth-child(2) {
+  padding: 0px;
+}
+
+/* New styles for the circle box */
+.circle-box {
+  width: 75px; /* Adjust the size as needed */
+  height: 75px;
+  border-radius: 50%;
+  margin-left: 10px;
+  overflow: hidden;
+  background-color: #4CAF50; /* Change to desired color */
+  display: inline-block;
+  margin-right: 10px; /* Adjust spacing as needed */
+  vertical-align: middle; /* Align with the text */
+  margin-block: 10px;
+  position: relative;
+}
+
+.circle-box>img {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+}
+
+/* Progress bar container */
+.progress-bar {
+  background-color: #e0e0e0; /* Light grey background */
+  border-radius: 5px;
+  padding: 3px;
+}
+
+/* Progress bar itself */
+.progress {
+  color: white;
+  text-align: center;
+  line-height: 20px; /* Center text vertically */
+  border-radius: 5px;
+  height: 20px;
+  font-size: 14px;
+  animation: progress 2s linear;
+  animation-delay: 0.5s;
+}
+
+/* Color coding based on percentage */
+.progress.high {
+  background: linear-gradient(to right, #4CAF50 0%, #4CAF50 100%); /* Green for >80% */
+}
+
+.progress.medium {
+  background: linear-gradient(to right, #FFC107 0%, #FFC107 100%); /* Pink for 60% to 80% */
+}
+
+.progress.low {
+  background: linear-gradient(to right, #FF5722 0%, #FF5722 100%); /* Red for <60% */
+}
+@keyframes progress {
+  0%{
+    width: 0;
+  }
+  100%{
+    width: var(width);
+  }
+}
